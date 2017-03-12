@@ -100,7 +100,7 @@ class fan_stadium(object): # fan_stadium 객체
                             #print(j+" , "+name_data[i].split("\"/> ")[1]) 
                             self.play_score[j][1]=self.play_score[j][1]+int(point_data[i].split("\"> ")[1])
                             self.play_count[j][1]=self.play_count[j][1]+1
-                            self.play_avg[j][1]=self.play_score[j][1]/self.play_count[j][1]
+                            self.play_avg[j][1]=round(self.play_score[j][1]/self.play_count[j][1],1)
                             #slef.play_count[j][1]++
                             new_value=True
                             break
@@ -133,16 +133,16 @@ class fan_stadium(object): # fan_stadium 객체
         else:
             #print("option value : %d" % option)
             if option==1:
-                str_best="Best Total Pointer"
+                str_best="Best Pointer"
             elif option==2:
-                str_best="Best Average Pointer"
+                str_best="Best Avg Pointer"
             else:    
                 print(" Please input 1(total) OR 2(average score)")
                 sys.exit(2)
             top=self.get_highest_player(players, option)
             ret="* "+str(get_until_today(self.print_previous))+" ~ "+str(get_until_today(1))+"\n* "+str_best+"\n"
             for i in range(len(top)):
-                ret+=str(i+1)+": "+top[i][0]+"-"+top[i][1]+" / "+str(top[i][2])+"pts / "+str(top[i][3])+" plays\n"
+                ret+=str(i+1)+": "+top[i][0]+"-"+top[i][1]+" / "+str(top[i][2])+"pt / "+str(top[i][3])+" plays\n"
         return ret
             
 """
