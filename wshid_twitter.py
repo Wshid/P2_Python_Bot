@@ -5,10 +5,10 @@ CONSUMER_SECRET = 'QTdCmRGeewcWR7fcdramz3xPVeeKRnlhGFVZ2y2N4rBpHVTEgD'
 ACCESS_KEY = '2356214425-Hx5p8ACt9eVftBlrcChwQstz1ACckX7t2lUXhCt'
 ACCESS_SECRET = 'uYONmjy48UH2fyDZF5lw4omyn8zs5E6hdgGU93Og9aRKA'
 
-class whsid_twitter(object):
+class wshid_twitter(object):
     
     # For setting authorization
-    def __init__(self, c_key, c_sec, a_key, a_sec):
+    def __init__(self, c_key='yORbHBox3ejItINAsbQNHMTEV', c_sec='QTdCmRGeewcWR7fcdramz3xPVeeKRnlhGFVZ2y2N4rBpHVTEgD', a_key='2356214425-Hx5p8ACt9eVftBlrcChwQstz1ACckX7t2lUXhCt', a_sec='uYONmjy48UH2fyDZF5lw4omyn8zs5E6hdgGU93Og9aRKA'):
         self.c_key=CONSUMER_KEY
         self.c_sec=CONSUMER_SECRET
         self.a_key=ACCESS_KEY
@@ -30,12 +30,18 @@ class whsid_twitter(object):
             #self.process_status(status)
             self.my_timeline.append(status.text)
             
-    def get_timeline(self):
+    def get_timeline_all(self):
+        ret=""
         for i in range(len(self.my_timeline)):
-            print(str(i+1)+" : "+self.my_timeline[i])
-"""           
+            ret+=str(i+1)+" : "+self.my_timeline[i]+"\n"
+        return ret
+    
+    def get_timeline(self, num): # 실제 인덱스는 0부터 시작하므로, 해당 번째에 맞게 출력
+        return self.my_timeline[num-1]
+            
+"""
 if __name__ == "__main__":
-    tw=whsid_twitter(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET);
-    tw.list_timeline()
-    tw.get_timeline()
+    tw=wshid_twitter(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_KEY, ACCESS_SECRET);
+    tw.list_timeline() # TimeLine 정보 로드
+    print(tw.get_timeline(1)+"\n"=="두산 : 유희관\nNC : 스튜어트") # 실제 출력 부분
 """
